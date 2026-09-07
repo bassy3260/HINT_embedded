@@ -138,9 +138,33 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="codes\volatile_practice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\board.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\btn.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\led.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="d1PM" />
+    <Folder Include="codes" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="d1PM\btn.h">
+      <SubType>compile</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
