@@ -22,4 +22,16 @@
 #define BTN_SW4  4
 #define BTN_SW5  5
 
+/* ===== FND : 세그먼트 PORTC, 자리선택 PD4~PD7 (Common Anode) ===== */
+#define FND_SEG_DDR   DDRC
+#define FND_SEG_PORT  PORTC     /* A~DP 세그먼트 */
+#define FND_COM_DDR   DDRD
+#define FND_COM_PORT  PORTD
+#define FND_COM_MASK  0xF0      /* PD4~PD7 */
+#define FND_COM_BASE  4         /* COM1 = PD4 */
+#define FND_DIGITS    4
+/* ===== 부저 : PG3 (능동형, 1=정지 0=울림) ===== */
+#define BUZZER_DDR   DDRG
+#define BUZZER_PORT  PORTG
+#define BUZZER_BIT   PG3
 #endif /* BOARD_H_ */

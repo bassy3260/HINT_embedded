@@ -147,6 +147,18 @@
     <Compile Include="d1PM\btn.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="d1PM\buzzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\fnd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d1PM\fnd.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="d1PM\led.c">
       <SubType>compile</SubType>
     </Compile>
