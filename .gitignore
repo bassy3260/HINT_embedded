@@ -1,0 +1,31 @@
+# ── Microchip / Atmel Studio ──────────────────────────────
+# IDE 캐시 / 사용자별 설정
+.vs/
+*.atsuo
+*.user
+
+# 빌드 산출물
+[Dd]ebug/
+[Rr]elease/
+*.o
+*.d
+*.elf
+*.hex
+*.eep
+*.lss
+*.map
+*.srec
+
+# 자동 생성 파일
+*.componentinfo.xml
+
+# ── C 실습 ────────────────────────────────────────────────
+*.exe
+*.obj
+*.ilk
+*.pdb
+tasks.json
+
+# ── 기타 ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
