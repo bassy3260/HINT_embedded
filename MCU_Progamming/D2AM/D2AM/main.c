@@ -14,8 +14,8 @@
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "D2AM/led.h"
-#include "D2AM/btn.h"
+#include "utils/led.h"
+#include "utils/btn.h"
 
 int main(void)
 {

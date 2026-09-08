@@ -14,10 +14,10 @@
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "D2AM/led.h"
-#include "D2AM/btn.h"
+#include "led.h"
+#include "btn.h"
 
-int main(void)
+int main5(void)
 {
     uint8_t pos     = 0;
     uint8_t running = 1;
