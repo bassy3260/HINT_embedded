@@ -156,10 +156,19 @@
     <Compile Include="utils\homework2.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="utils\homework3.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="utils\led.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="utils\led.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utils\uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

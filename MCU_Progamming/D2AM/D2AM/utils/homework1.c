@@ -17,7 +17,7 @@
 #include "led.h"
 #include "btn.h"
 
-int main5(void)
+int main1(void)
 {
     uint8_t pos     = 0;
     uint8_t running = 1;
