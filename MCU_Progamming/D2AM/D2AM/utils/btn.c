@@ -14,9 +14,14 @@
 #include "btn.h"
 
 /* ISR 이 쓰고 main 이 읽는다 — volatile 필수 */
-static volatile uint8_t btn_event = 0;
+// static이라서 메인이 보고싶다한들 볼수가 없다.
+static uint8_t btn_event = 0;
+uint8_t count = 0;
 
-ISR(INT4_vect) { btn_event |= BTN_EVENT_SW2; }   /* SW2 */
+ISR(INT4_vect) { 
+	btn_event |= BTN_EVENT_SW2; 
+	count++;
+}   /* SW2 */
 ISR(INT5_vect) { btn_event |= BTN_EVENT_SW3; }   /* SW3 */
 ISR(INT6_vect) { btn_event |= BTN_EVENT_SW4; }   /* SW4 */
 ISR(INT7_vect) { btn_event |= BTN_EVENT_SW5; }   /* SW5 */
