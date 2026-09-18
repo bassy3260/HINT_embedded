@@ -56,14 +56,14 @@ void vFANTask(void *pvParameters){
 
 int main(void)
 {
-	xTaskCreate(vLEDBlinkTask,"LED_TSK",configMINIMAL_STACK_SIZE,NULL,1,NULL);
-	xTaskCreate(vLCDPrintTask,"LCD_TSK",configMINIMAL_STACK_SIZE,NULL,1,NULL);
-	xTaskCreate(vFANTask, "FAN_TSK", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
-	
-	vTaskStartScheduler();
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
-}
+	pwm_init();
+	pwm_set_duty(100);   // 최고 속도로 계속 회전 (원하는 % 로)
 
+	xTaskCreate(vLEDBlinkTask, "LED_TSK", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+	xTaskCreate(vLCDPrintTask, "LCD_TSK", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+	// FAN 태스크는 삭제
+
+	vTaskStartScheduler();
+
+	while (1) { }
+}

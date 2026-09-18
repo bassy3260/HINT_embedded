@@ -17,6 +17,10 @@
 #define PWM_H_
 
 #include <stdint.h>
+#include <avr/io.h>
+
+#define PWM_DDR DDRE
+#define PWM_BIT PE3
 
 void pwm_init(void);                  /* 8비트 Fast PWM · 900 Hz · 정지 상태로 시작 */
 void pwm_set_duty(uint8_t percent);   /* 0 ~ 100 [%] — 클수록 빠르다 */

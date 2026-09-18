@@ -17,12 +17,7 @@
  *      f_pwm = F_CPU / (분주비 x (1 + TOP))
  *            = 14,745,600 / (64 x 256)  =  900 Hz     (주기 1.111 ms)
  */
-#include <avr/io.h>
 #include "pwm.h"
-
-/* FAN 신호 핀 : PE3 (OC3A) — board.h 없이 여기서 정의한다 */
-#define PWM_DDR   DDRE
-#define PWM_BIT   PE3
 
 #define PWM_TOP  255
 
