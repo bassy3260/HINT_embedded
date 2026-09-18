@@ -29,3 +29,8 @@ tasks.json
 # ── 기타 ──────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+
+
+# ── RTOS ──────────────────────────────────────────────────
+RTOS/FreeRTOS-LTS/
+embedded linux/face_recognition/
