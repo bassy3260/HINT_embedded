@@ -33,5 +33,7 @@ Thumbs.db
 
 # ── RTOS ──────────────────────────────────────────────────
 RTOS/FreeRTOS-LTS/
-embedded linux/face_recognition/# 프로젝트 폴더 안에 동일 사본이 있는 FreeRTOS 커널 .c (Source/ 바로 아래만, 헤더·portable은 유지)
-RTOS/freeRTOS_Projects/**/Source/*.c
+embedded linux/face_recognition/
+
+# 프로젝트별 FreeRTOS Source 복사본 (커널 .c / include / portable)
+RTOS/freeRTOS_Projects/**/Source/
