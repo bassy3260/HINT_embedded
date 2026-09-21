@@ -9,6 +9,7 @@
 #include <stdint.h>
 
 #include "FreeRTOS.h"
+#include "semphr.h"
 #include "task.h"
 #include "lcd.h"
 
@@ -39,6 +40,7 @@ volatile uint8_t count = 0;
 static uint8_t producer_id[NUM_PRODUCERS] = {0,1,2,3,4};
 static uint8_t consumer_id[NUM_CUNSUMERS] = {0,1,2,3,4};
 
+static SemaphoreHandle_t xBufferSemaphore;
 
 /************************************************************************
 * 간단한 난수 생성기                                                                    
@@ -64,7 +66,12 @@ static void vLCDTask(void *pvParameters){
 	(void)pvParameters;
 	
 	while(1){
+		// count라는 변수를 다른 애들이 건들기 때문에 레이스 컨디션이 생기는거야..
+		// count를 락합시다.
+		xSemaphoreTake(xBufferSemaphore, portMAX_DELAY);
 		n=count;
+		xSemaphoreGive(xBufferSemaphore); // 놓습니다..
+		
 		lcd_gotoxy(0,1);
 		lcd_string("Count = ");
 		
@@ -163,10 +170,11 @@ static void vProducerTask(void *pvParameters){
 			temp_count++;
 			
 			vTaskDelay(pdMS_TO_TICKS(500));
-			
+			xSemaphoreTake(xBufferSemaphore,portMAX_DELAY);
 			count = temp_count; // 다시 저장
 			
 			update_led();
+			xSemaphoreGive(xBufferSemaphore);
 		}
 	
 	}
@@ -230,8 +238,11 @@ static void vConsumerTask(void *pvParameters){
 			vTaskDelay(pdMS_TO_TICKS(500));
 			temp_count--;
 			vTaskDelay(pdMS_TO_TICKS(500));
+			
+			xSemaphoreTake(xBufferSemaphore,portMAX_DELAY);
 			count = temp_count;
 			update_led();
+			xSemaphoreGive(xBufferSemaphore);
 		}
 	}
 }
@@ -250,6 +261,13 @@ int main(void)
 	lcd_gotoxy(0,0);
 	lcd_string("Buffer Count:");
 	
+	xBufferSemaphore = xSemaphoreCreateBinary();
+	if(xBufferSemaphore == NULL){
+		PORTB=0x00;
+		while(1);
+	}
+	
+	xSemaphoreGive(xBufferSemaphore);
 	
 	for(i = 0;i<NUM_PRODUCERS;i++){
 		xTaskCreate(vProducerTask,"Producer",80,&producer_id[i],1,NULL);
