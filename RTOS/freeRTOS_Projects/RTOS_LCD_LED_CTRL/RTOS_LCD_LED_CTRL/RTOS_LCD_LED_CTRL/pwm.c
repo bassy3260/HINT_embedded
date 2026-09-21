@@ -42,11 +42,13 @@ void pwm_set_duty(uint8_t percent)
     pwm_set_raw((uint8_t)(((uint32_t)percent * PWM_TOP) / 100));
 }
 
+
 void pwm_set_raw(uint8_t value)
 {
     if (value == 0) {
         /* Non-Inverting 에서 OCR3A = 0 이면 한 클럭짜리 HIGH 가 남는다.
            완전히 멈추려면 비교 출력을 떼고 핀을 직접 LOW(정지)로 만든다. */
+		// Timer3 설정
         TCCR3A &= ~((1 << COM3A1) | (1 << COM3A0));
         PORTE  &= ~(1 << PWM_BIT);
     } else {

@@ -63,6 +63,7 @@ int main(void)
 	xTaskCreate(vLCDPrintTask, "LCD_TSK", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
 	// FAN 태스크는 삭제
 
+	// 스케줄러 불러오기 
 	vTaskStartScheduler();
 
 	while (1) { }
