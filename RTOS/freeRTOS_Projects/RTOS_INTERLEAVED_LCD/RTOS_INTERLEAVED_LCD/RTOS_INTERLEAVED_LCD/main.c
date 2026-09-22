@@ -13,8 +13,8 @@ static void vTaskA(void *pvParameters){
 	(void)pvParameters;
 	
 	while(1){
-		
-		xSemaphoreTake(xBufferSemaphore,portMAX_DELAY);
+		taskENTER_CRITICAL();
+		//xSemaphoreTake(xBufferSemaphore,portMAX_DELAY);
 		
 		// 얘네도 전부 lcd 공유자원에 접근함
 		lcd_clear();
@@ -24,10 +24,13 @@ static void vTaskA(void *pvParameters){
 		
 		for(i=0; i<8; i++){
 			lcd_data('A');
-			
+			//TaskDelay()를 넣으면 보호가 깨진다	
+			// Blocked, CPU를 내놓음
+			// 두 task가 서로 다른 잠금을 씀
 			vTaskDelay(pdMS_TO_TICKS(100));
 		}
-		xSemaphoreGive(xBufferSemaphore);
+		//xSemaphoreGive(xBufferSemaphore);
+		taskEXIT_CRITICAL();
 		vTaskDelay(pdMS_TO_TICKS(500));
 		
 	}
@@ -39,6 +42,7 @@ static void vTaskB(void *pvParamters){
 	(void)pvParamters;
 	
 	while(1){
+		
 		xSemaphoreTake(xBufferSemaphore,portMAX_DELAY);
 		lcd_gotoxy(0,1);
 		
@@ -65,6 +69,7 @@ int main(void){
 	}
 	
 	xSemaphoreGive(xBufferSemaphore);
+	
 	
 	xTaskCreate(vTaskA,"TaskA",80,NULL,1,NULL);
 	
