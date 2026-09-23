@@ -1,7 +1,7 @@
 # HINT_embedded
 
 현대자동차그룹 **K-뉴딜 아카데미 HINT** 임베디드 AI SW 과정 실습 리포지토리입니다.
-수업에서 다룬 C 언어, 포인터, MCU 펌웨어, 파이썬 예제 코드를 날짜별로 정리합니다.
+수업에서 다룬 C 언어, MCU 펌웨어, RTOS, 임베디드 리눅스, OTA 보안 예제 코드를 날짜별로 정리합니다.
 
 ## 디렉터리 구성
 
@@ -10,6 +10,10 @@
 | `C/DAY1/` | C 언어 기초 — 변수와 자료형, `printf`/`scanf` 입출력, 전위·후위 증감 연산자, 문자열 배열, 성적표 출력 프로젝트 |
 | `C/DAY2/` | 포인터 — 주소·역참조 개념, 포인터를 통한 값 변경, 함수 인자로 주소 전달(call by reference) |
 | `MCU_Progamming/MCU_0907/` | ATmega128 펌웨어 — 레지스터 직접 접근 매크로(`REG8`)로 `DDRB`/`PORTB` 제어, Active-Low LED 8개 순차 점등 |
+| `MCU_Progamming/D2AM ~ D3PM/` | ATmega128 — 인터럽트, 링 버퍼 + 시리얼 명령으로 LED 제어, LCD에 CDS 값 표시 |
+| `RTOS/` | ATmega128 FreeRTOS — 태스크, 큐, 세마포어, 타이머, LCD 슈팅 게임 ([프로젝트 목록](RTOS/freeRTOS_Projects/README.md)) |
+| `embedded linux/scripts/` | 라즈베리 파이 — `gpiozero` LED 제어, 카메라 캡처, 얼굴 인식 LED, 시스템 정보 로깅 |
+| `OTA_Security/` | OTA 보안 — 해시 검증, AES 암호화, RSA 키 전달, 서명 검증, 조각 전송 ([실습 목록](OTA_Security/README.md)) |
 | `python/` | AI를 위한 파이썬 실습 (수업 자료는 `.gitignore` 처리) |
 
 ## 개발 환경
@@ -19,6 +23,9 @@
   - 타깃 MCU: `ATmega128`
   - 프로그래머: AVRISP mkII (ISP, 125 kHz)
   - 프로젝트 파일: `MCU_Progamming/MCU_0907/MCU_0907.atsln`
+- **RTOS 실습**: FreeRTOS (커널 소스 `RTOS/FreeRTOS-LTS/`는 `.gitignore` 처리)
+- **임베디드 리눅스 실습**: 라즈베리 파이, Python 3 (`gpiozero`, OpenCV)
+- **OTA 보안 실습**: Python 3, OpenSSL (Git for Windows 포함본), `pycryptodome`
 - **파이썬 실습**: Python 3
 
 ## 빌드 & 실행
@@ -48,3 +55,7 @@ gcc C\DAY2\pointer_easy.cpp -o pointer_easy
 | DAY1 (08/24) | C 기초 문법, 입출력, 증감 연산자, 문자열 |
 | DAY2 (08/25) | 포인터와 주소, call by reference |
 | 09/07 | MCU 프로그래밍 — ATmega128 레지스터 제어와 LED 제어 |
+| 09/08 ~ 09/09 | 인터럽트, 링 버퍼 + 시리얼 입력, LCD·CDS |
+| 09/16 ~ 09/18 | 임베디드 리눅스 — 라즈베리 파이 GPIO, 카메라, 얼굴 인식 |
+| 09/18 ~ 09/22 | FreeRTOS — 태스크, 큐, 세마포어, 타이머, 미니 프로젝트 |
+| 09/23 | OTA 보안 — 해시, AES, RSA, 서명, 조각 전송 |
