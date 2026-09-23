@@ -1,6 +1,6 @@
 import os
 import urllib.request
-URL = 'http://192.168.0.26:8000/F.bin'
+URL = 'http://<ip>:8000/F.bin'
 DEST = './work/device/F.bin'
 
 blob = urllib.request.urlopen(URL).read()

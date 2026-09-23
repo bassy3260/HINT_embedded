@@ -37,3 +37,10 @@ embedded linux/face_recognition/
 
 # 프로젝트별 FreeRTOS Source 복사본 (커널 .c / include / portable)
 RTOS/freeRTOS_Projects/**/Source/
+
+# ── OTA_Security ──────────────────────────────────────────
+# 큰 파일 (100MB 이상)
+OTA_Security/large_file.zip
+OTA_Security/split/big.bin
+OTA_Security/split/merged.bin
+OTA_Security/split/dist/
