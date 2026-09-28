@@ -39,8 +39,25 @@ embedded linux/face_recognition/
 RTOS/freeRTOS_Projects/**/Source/
 
 # ── OTA_Security ──────────────────────────────────────────
-# 큰 파일 (100MB 이상)
-OTA_Security/large_file.zip
-OTA_Security/split/big.bin
-OTA_Security/split/merged.bin
-OTA_Security/split/dist/
+# 실습 중 생성되는 산출물은 커밋하지 않음 (코드 .py / 문서 .md 만 관리)
+# 펌웨어·암호문·조각 (100MB 파일 포함)
+OTA_Security/**/*.bin
+OTA_Security/**/*.bin.tmp
+OTA_Security/**/*.enc
+OTA_Security/**/*.zip
+# 해시·서명·매니페스트
+OTA_Security/**/*.sha256
+OTA_Security/**/*.sig
+OTA_Security/**/sig
+OTA_Security/**/manifest.json
+# 키·인증서 (개인키 유출 방지)
+OTA_Security/**/*.pem
+OTA_Security/**/*.crt
+OTA_Security/**/*.xdb
+# 배포/다운로드 폴더
+OTA_Security/**/dist/
+OTA_Security/**/work/
+OTA_Security/**/device/
+# 파이썬 캐시
+__pycache__/
+*.pyc
