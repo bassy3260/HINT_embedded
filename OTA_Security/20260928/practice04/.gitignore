@@ -1,0 +1,17 @@
+# 루트 .gitignore 의 OTA_Security/**/device/ 규칙 때문에 코드 폴더까지 무시되므로 다시 포함
+!/device/
+
+# 실행 산출물 (코드 .py / 문서 .md 만 관리)
+/server/files/
+/device/work/
+__pycache__/
+
+# 제작자 비밀키 (절대 커밋 X)
+/prepare/keys/
+
+# Root CA 비밀키 (절대 커밋 X)
+/prepare/ca/
+
+# 펌웨어 암호화 키, 평문 원본 (절대 커밋 X)
+/prepare/fw_key.hex
+/prepare/plain/
